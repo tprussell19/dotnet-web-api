@@ -11,7 +11,7 @@ namespace ProjectName.Controllers
 {
   [ApiController]
   [ApiVersion("1.0")]
-  [Route("api/{v:ApiVersion}/[controller]")]
+  [Route("api/v{version:ApiVersion}/[controller]")]
   public class MainObjectsController : ControllerBase
   {
     private readonly ProjectNameContext _db;
