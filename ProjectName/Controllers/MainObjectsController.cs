@@ -30,25 +30,25 @@ namespace ProjectName.Controllers
     [HttpGet("{id}")]
     public async Task<ActionResult<MainObject>> GetMainObject(int id)
     {
-      var o = await _db.MainObjects.FindAsync(id);
-      if (o == null) return NotFound();
-      return o;
+      var mo = await _db.MainObjects.FindAsync(id);
+      if (mo == null) return NotFound();
+      return mo;
     }
 
     [HttpPost]
-    public async Task<ActionResult<MainObject>> Post(MainObject r)
+    public async Task<ActionResult<MainObject>> Post(MainObject mo)
     {
-      _db.MainObjects.Add(r);
+      _db.MainObjects.Add(mo);
       await _db.SaveChangesAsync();
-      return CreatedAtAction(nameof(GetMainObject), new { id = r.MainObjectId }, r);
+      return CreatedAtAction(nameof(GetMainObject), new { id = mo.MainObjectId }, mo);
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> Put(int id, MainObject r)
+    public async Task<IActionResult> Put(int id, MainObject mo)
     {
-      if (id != r.MainObjectId) return BadRequest();
+      if (id != mo.MainObjectId) return BadRequest();
 
-      _db.Entry(r).State = EntityState.Modified;
+      _db.Entry(mo).State = EntityState.Modified;
 
       try
       {
@@ -65,10 +65,10 @@ namespace ProjectName.Controllers
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteMainObject(int id)
     {
-      MainObject r = await _db.MainObjects.FindAsync(id);
-      if (r == null) return NotFound();
+      MainObject mo = await _db.MainObjects.FindAsync(id);
+      if (mo == null) return NotFound();
 
-      _db.MainObjects.Remove(r);
+      _db.MainObjects.Remove(mo);
       await _db.SaveChangesAsync();
 
       return NoContent();
