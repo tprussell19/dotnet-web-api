@@ -1,8 +1,8 @@
 namespace ProjectName.Models
 {
-  public class Object
+  public class MainObject
   {
-    public int ObjectId { get; set; }
+    public int MainObjectId { get; set; }
     public string SomeProperty { get; set; }
   }
 }

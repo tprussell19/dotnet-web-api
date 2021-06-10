@@ -8,6 +8,6 @@ namespace ProjectName.Models
     : base(options)
     {
     }
-    public DbSet<Object> Objects { get; set; }
+    public DbSet<MainObject> MainObjects { get; set; }
   }
 }
