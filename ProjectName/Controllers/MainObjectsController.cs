@@ -10,7 +10,8 @@ using Microsoft.EntityFrameworkCore;
 namespace ProjectName.Controllers
 {
   [ApiController]
-  [Route("api/[controller]")]
+  [ApiVersion("1.0")]
+  [Route("api/{v:ApiVersion}/[controller]")]
   public class MainObjectsController : ControllerBase
   {
     private readonly ProjectNameContext _db;

@@ -25,13 +25,22 @@ namespace ProjectName.Solution
         options.AddDefaultPolicy(
                   builder =>
                   {
-                builder.WithOrigins(
-                          "http://localhost:5000",
-                          "http://localhost:3000")
-                              .AllowAnyHeader()
-                              .AllowAnyMethod();
-              });
+                    builder.WithOrigins(
+                              "http://localhost:5000",
+                              "http://localhost:3000")
+                                  .AllowAnyHeader()
+                                  .AllowAnyMethod();
+                  });
       });
+
+      services.AddApiVersioning(o =>
+        {
+          o.ReportApiVersions = true;
+          o.AssumeDefaultVersionWhenUnspecified = true;
+          o.DefaultApiVersion = new(1, 0);
+        }
+      );
+
       services.AddControllers();
 
       services.AddEntityFrameworkMySql()
